@@ -2,7 +2,7 @@
 
 /*
 	This program is provided under the LGPL license ver 2.1
-	c_convert.php ver 0.1, written by Katsumi.
+	c_convert.php ver 0.2, written by Katsumi.
 	https://github.com/kmorimatsu
 	
 	Modofied for ePaper classes
@@ -464,7 +464,7 @@ class mainclass {
 		$dis='';
 		for($i=0;$i<count($m[0]);$i++) $dis.=$m[0][$i]."\n";
 		if (!preg_match('/(^|[\r\n])([0-9a-f]{8}).*$/',$dis,$m)) exit($dis.'Unknown error at '.__LINE__);
-		$end=hexdec($m[2])+4;
+		$end=hexdec($m[2])+16; // Maximum length of last line is 16 bytes
 		echo "function name: $func (",dechex($addr),'-',dechex($end-1),")\n";
 		$this->funcsneeded[$func]=array(
 				'address'=>$addr,
