@@ -1,3 +1,59 @@
+rem 
+rem 	This file was copied from Waveshare C library and modified by Katsumi. 
+rem 
+rem /*****************************************************************************
+rem * | File      	:   EPD_2in13_V2.c
+rem * | Author      :   Waveshare team
+rem * | Function    :   2.13inch e-paper V2
+rem * | Info        :
+rem *----------------
+rem * |	This version:   V3.0
+rem * | Date        :   2019-06-13
+rem * | Info        :
+rem * -----------------------------------------------------------------------------
+rem * V3.0(2019-06-13):
+rem * 1.Change name:
+rem *    EPD_Reset() => EPD_2IN13_V2_Reset()
+rem *    EPD_SendCommand() => EPD_2IN13_V2_SendCommand()
+rem *    EPD_SendData() => EPD_2IN13_V2_SendData()
+rem *    EPD_WaitUntilIdle() => EPD_2IN13_V2_ReadBusy()
+rem *    EPD_Init() => EPD_2IN13_V2_Init()
+rem *    EPD_Clear() => EPD_2IN13_V2_Clear()
+rem *    EPD_Display() => EPD_2IN13_V2_Display()
+rem *    EPD_Sleep() => EPD_2IN13_V2_Sleep()
+rem * 2.add:
+rem *    EPD_2IN13_V2_DisplayPartBaseImage()
+rem * -----------------------------------------------------------------------------
+rem * V2.0(2018-11-14):
+rem * 1.Remove:ImageBuff[EPD_HEIGHT * EPD_WIDTH / 8]
+rem * 2.Change:EPD_2IN13_V2_Display(UBYTE *Image)
+rem *   Need to pass parameters: pointer to cached data
+rem * 3.Change:
+rem *   EPD_RST -> EPD_RST_PIN
+rem *   EPD_DC -> EPD_DC_PIN
+rem *   EPD_CS -> EPD_CS_PIN
+rem *   EPD_BUSY -> EPD_BUSY_PIN
+rem #
+rem # Permission is hereby granted, free of charge, to any person obtaining a copy
+rem # of this software and associated documnetation files (the "Software"), to deal
+rem # in the Software without restriction, including without limitation the rights
+rem # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+rem # copies of the Software, and to permit persons to  whom the Software is
+rem # furished to do so, subject to the following conditions:
+rem #
+rem # The above copyright notice and this permission notice shall be included in
+rem # all copies or substantial portions of the Software.
+rem #
+rem # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+rem # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+rem # FITNESS OR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+rem # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+rem # LIABILITY WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+rem # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+rem # THE SOFTWARE.
+rem #
+rem ******************************************************************************/
+
 USEVAR C_RAM
 GOSUB INIT_C
 END

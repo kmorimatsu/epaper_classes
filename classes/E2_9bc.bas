@@ -1,3 +1,90 @@
+rem 
+rem 	This file was copied from Waveshare C library and modified by Katsumi. 
+rem 
+rem /*****************************************************************************
+rem * | File      	:   EPD_2in9bc.c
+rem * | Author      :   Waveshare team
+rem * | Function    :   2.9inch e-paper b&c
+rem * | Info        :
+rem *----------------
+rem * |	This version:   V3.0
+rem * | Date        :   2019-06-12
+rem * | Info        :
+rem * -----------------------------------------------------------------------------
+rem * V3.0(2019-06-12):
+rem * 1.Change:
+rem *    EPD_Reset() => EPD_2IN9BC_Reset()
+rem *    EPD_SendCommand() => EPD_2IN9BC_SendCommand()
+rem *    EPD_SendData() => EPD_2IN9BC_SendData()
+rem *    EPD_WaitUntilIdle() => EPD_2IN9BC_ReadBusy()
+rem *    EPD_Init() => EPD_2IN9BC_Init()
+rem *    EPD_Clear() => EPD_2IN9BC_Clear()
+rem *    EPD_Display() => EPD_2IN9BC_Display()
+rem *    EPD_Sleep() => EPD_2IN9BC_Sleep()
+rem * 2.remove commands define:
+rem *    #define PANEL_SETTING                               0x00
+rem *    #define POWER_SETTING                               0x01
+rem *    #define POWER_OFF                                   0x02
+rem *    #define POWER_OFF_SEQUENCE_SETTING                  0x03
+rem *    #define POWER_ON                                    0x04
+rem *    #define POWER_ON_MEASURE                            0x05
+rem *    #define BOOSTER_SOFT_START                          0x06
+rem *    #define DEEP_SLEEP                                  0x07
+rem *    #define DATA_START_TRANSMISSION_1                   0x10
+rem *    #define DATA_STOP                                   0x11
+rem *    #define DISPLAY_REFRESH                             0x12
+rem *    #define DATA_START_TRANSMISSION_2                   0x13
+rem *    #define PLL_CONTROL                                 0x30
+rem *    #define TEMPERATURE_SENSOR_COMMAND                  0x40
+rem *    #define TEMPERATURE_SENSOR_CALIBRATION              0x41
+rem *    #define TEMPERATURE_SENSOR_WRITE                    0x42
+rem *    #define TEMPERATURE_SENSOR_READ                     0x43
+rem *    #define VCOM_AND_DATA_INTERVAL_SETTING              0x50
+rem *    #define LOW_POWER_DETECTION                         0x51
+rem *    #define TCON_SETTING                                0x60
+rem *    #define TCON_RESOLUTION                             0x61
+rem *    #define GET_STATUS                                  0x71
+rem *    #define AUTO_MEASURE_VCOM                           0x80
+rem *    #define VCOM_VALUE                                  0x81
+rem *    #define VCM_DC_SETTING_REGISTER                     0x82
+rem *    #define PARTIAL_WINDOW                              0x90
+rem *    #define PARTIAL_IN                                  0x91
+rem *    #define PARTIAL_OUT                                 0x92
+rem *    #define PROGRAM_MODE                                0xA0
+rem *    #define ACTIVE_PROGRAM                              0xA1
+rem *    #define READ_OTP_DATA                               0xA2
+rem *    #define POWER_SAVING                                0xE3
+rem * -----------------------------------------------------------------------------
+rem * V2.0(2018-11-06):
+rem * 1.Remove:ImageBuff[EPD_HEIGHT * EPD_WIDTH / 8]
+rem * 2.Change:EPD_Display(UBYTE *Image)
+rem *   Need to pass parameters: pointer to cached data
+rem * 3.Change:
+rem *   EPD_RST -> EPD_RST_PIN
+rem *   EPD_DC -> EPD_DC_PIN
+rem *   EPD_CS -> EPD_CS_PIN
+rem *   EPD_BUSY -> EPD_BUSY_PIN
+rem #
+rem # Permission is hereby granted, free of charge, to any person obtaining a copy
+rem # of this software and associated documnetation files (the "Software"), to deal
+rem # in the Software without restriction, including without limitation the rights
+rem # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+rem # copies of the Software, and to permit persons to  whom the Software is
+rem # furished to do so, subject to the following conditions:
+rem #
+rem # The above copyright notice and this permission notice shall be included in
+rem # all copies or substantial portions of the Software.
+rem #
+rem # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+rem # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+rem # FITNESS OR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+rem # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+rem # LIABILITY WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+rem # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+rem # THE SOFTWARE.
+rem #
+rem ******************************************************************************/
+
 USEVAR C_RAM
 GOSUB INIT_C
 END

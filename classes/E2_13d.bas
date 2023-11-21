@@ -1,3 +1,69 @@
+rem 
+rem 	This file was copied from Waveshare C library and modified by Katsumi. 
+rem 
+rem /*****************************************************************************
+rem * | File      	:   EPD_2in13d.c
+rem * | Author      :   Waveshare team
+rem * | Function    :   2.13inch e-paper d
+rem * | Info        :
+rem *----------------
+rem * |	This version:   V3.0
+rem * | Date        :   2019-06-12
+rem * | Info        :
+rem * -----------------------------------------------------------------------------
+rem * V3.0(2019-06-12):
+rem * 1.Change:
+rem *    lut_vcomDC[]  => EPD_2IN13D_lut_vcomDC[]
+rem *    lut_ww[] => EPD_2IN13D_lut_ww[]
+rem *    lut_bw[] => EPD_2IN13D_lut_bw[]
+rem *    lut_wb[] => EPD_2IN13D_lut_wb[]
+rem *    lut_bb[] => EPD_2IN13D_lut_bb[]
+rem *    lut_vcom1[] => EPD_2IN13D_lut_vcom1[]
+rem *    lut_ww1[] => EPD_2IN13D_lut_ww1[]
+rem *    lut_bw1[] => EPD_2IN13D_lut_bw1[]
+rem *    lut_wb1[] => EPD_2IN13D_lut_wb1[]
+rem *    lut_bb1[] => EPD_2IN13D_lut_bb1[]
+rem *    EPD_Reset() => EPD_2IN13D_Reset()
+rem *    EPD_SendCommand() => EPD_2IN13D_SendCommand()
+rem *    EPD_SendData() => EPD_2IN13D_SendData()
+rem *    EPD_WaitUntilIdle() => EPD_2IN13D_ReadBusy()
+rem *    EPD_SetFullReg() => EPD_2IN13D_SetFullReg()
+rem *    EPD_SetPartReg() => EPD_2IN13D_SetPartReg()
+rem *    EPD_TurnOnDisplay() => EPD_2IN13D_TurnOnDisplay()
+rem *    EPD_Init() => EPD_2IN13D_Init()
+rem *    EPD_Clear() => EPD_2IN13D_Clear()
+rem *    EPD_Display() => EPD_2IN13D_Display()
+rem *    EPD_Sleep() => EPD_2IN13D_Sleep()
+rem * V2.0(2018-11-13):
+rem * 1.Remove:ImageBuff[EPD_2IN13D_HEIGHT * EPD_2IN13D_WIDTH / 8]
+rem * 2.Change:EPD_Display(UBYTE *Image)
+rem *   Need to pass parameters: pointer to cached data
+rem * 3.Change:
+rem *   EPD_RST -> EPD_RST_PIN
+rem *   EPD_DC -> EPD_DC_PIN
+rem *   EPD_CS -> EPD_CS_PIN
+rem *   EPD_BUSY -> EPD_BUSY_PIN
+rem #
+rem # Permission is hereby granted, free of charge, to any person obtaining a copy
+rem # of this software and associated documnetation files (the "Software"), to deal
+rem # in the Software without restriction, including without limitation the rights
+rem # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+rem # copies of the Software, and to permit persons to  whom the Software is
+rem # furished to do so, subject to the following conditions:
+rem #
+rem # The above copyright notice and this permission notice shall be included in
+rem # all copies or substantial portions of the Software.
+rem #
+rem # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+rem # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+rem # FITNESS OR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+rem # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+rem # LIABILITY WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+rem # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+rem # THE SOFTWARE.
+rem #
+rem ******************************************************************************/
+
 USEVAR C_RAM
 GOSUB INIT_C
 END

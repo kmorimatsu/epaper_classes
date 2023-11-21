@@ -1,3 +1,118 @@
+rem 
+rem 	This file was copied from Waveshare C library and modified by Katsumi. 
+rem 
+rem /*****************************************************************************
+rem * | File      	:   EPD_4in2.c
+rem * | Author      :   Waveshare team
+rem * | Function    :   4.2inch e-paper
+rem * | Info        :
+rem *----------------
+rem * |	This version:   V3.1
+rem * | Date        :   2019-11-14
+rem * | Info        :
+rem * -----------------------------------------------------------------------------
+rem * V3.1(2019-11-14):
+rem * 1.Add 4 grayscale drive and display program
+rem *	 Add EPD_4IN2_4Gray_lut_vcom[]
+rem *	 Add EPD_4IN2_4Gray_lut_ww[]
+rem *	 Add EPD_4IN2_4Gray_lut_bw[]
+rem *	 Add EPD_4IN2_4Gray_lut_wb
+rem *	 Add EPD_4IN2_4Gray_lut_bb
+rem *	 Add EPD_4IN2_Partial_SetLut()
+rem *	 Add EPD_4IN2_4Gray_lut()
+rem *	 Add EPD_4IN2_Init_4Gray()
+rem *	 Add EPD_4IN2_4GrayDisplay(....)
+rem * 2.Add partial refresh display
+rem * 	 Add EPD_4IN2_Partial_lut_vcom1[]
+rem * 	 Add EPD_4IN2_Partial_lut_ww1[]
+rem * 	 Add EPD_4IN2_Partial_lut_bw1[]
+rem * 	 Add EPD_4IN2_Partial_lut_wb1[]
+rem * 	 Add EPD_4IN2_Partial_lut_bb1[]
+rem * 	 Add EPD_4IN2_Partial_SetLut()
+rem * 	 Add EPD_4IN2_PartialDisplay(...)
+rem * 	 Poor display, no display function by default
+rem *
+rem * V3.0(2019-06-13):
+rem * 1.Change:
+rem *    lut_vcomDC[]  => EPD_4IN2_lut_vcomDC[]
+rem *    lut_ww[] => EPD_4IN2_lut_ww[]
+rem *    lut_bw[] => EPD_4IN2_lut_bw[]
+rem *    lut_wb[] => EPD_4IN2_lut_wb[]
+rem *    lut_bb[] => EPD_4IN2_lut_bb[]
+rem *    EPD_Reset() => EPD_4IN2_Reset()
+rem *    EPD_SendCommand() => EPD_4IN2_SendCommand()
+rem *    EPD_SendData() => EPD_4IN2_SendData()
+rem *    EPD_WaitUntilIdle() => EPD_4IN2_ReadBusy()
+rem *    EPD_SetFullReg() => EPD_4IN2_SetFullReg()
+rem *    EPD_SetPartReg() => EPD_4IN2_SetPartReg()
+rem *    EPD_TurnOnDisplay() => EPD_4IN2_TurnOnDisplay()
+rem *    EPD_Init() => EPD_4IN2_Init()
+rem *    EPD_Clear() => EPD_4IN2_Clear()
+rem *    EPD_Display() => EPD_4IN2_Display()
+rem *    EPD_Sleep() => EPD_4IN2_Sleep()
+rem * 2.remove commands define:
+rem *    #define PANEL_SETTING                               0x00
+rem *    #define POWER_SETTING                               0x01
+rem *    #define POWER_OFF                                   0x02
+rem *    #define POWER_OFF_SEQUENCE_SETTING                  0x03
+rem *    #define POWER_ON                                    0x04
+rem *    #define POWER_ON_MEASURE                            0x05
+rem *    #define BOOSTER_SOFT_START                          0x06
+rem *    #define DEEP_SLEEP                                  0x07
+rem *    #define DATA_START_TRANSMISSION_1                   0x10
+rem *    #define DATA_STOP                                   0x11
+rem *    #define DISPLAY_REFRESH                             0x12
+rem *    #define DATA_START_TRANSMISSION_2                   0x13
+rem *    #define VCOM_LUT                                    0x20
+rem *    #define W2W_LUT                                     0x21
+rem *    #define B2W_LUT                                     0x22
+rem *    #define W2B_LUT                                     0x23
+rem *    #define B2B_LUT                                     0x24
+rem *    #define PLL_CONTROL                                 0x30
+rem *    #define TEMPERATURE_SENSOR_CALIBRATION              0x40
+rem *    #define TEMPERATURE_SENSOR_SELECTION                0x41
+rem *    #define TEMPERATURE_SENSOR_WRITE                    0x42
+rem *    #define TEMPERATURE_SENSOR_READ                     0x43
+rem *    #define VCOM_AND_DATA_INTERVAL_SETTING              0x50
+rem *    #define LOW_POWER_DETECTION                         0x51
+rem *    #define TCON_SETTING                                0x60
+rem *    #define RESOLUTION_SETTING                          0x61
+rem *    #define GET_STATUS                                  0x71
+rem *    #define AUTO_MEASURE_VCOM                           0x80
+rem *    #define READ_VCOM_VALUE                             0x81
+rem *    #define VCM_DC_SETTING                              0x82
+rem *    #define PARTIAL_WINDOW                              0x90
+rem *    #define PARTIAL_IN                                  0x91
+rem *    #define PARTIAL_OUT                                 0x92
+rem *    #define PROGRAM_MODE                                0xA0
+rem *    #define ACTIVE_PROGRAM                              0xA1
+rem *    #define READ_OTP_DATA                               0xA2
+rem *    #define POWER_SAVING                                0xE3
+rem * V2.0(2018-10-30):
+rem * 1.Remove:ImageBuff[EPD_HEIGHT * EPD_WIDTH / 8]
+rem * 2.Change:EPD_Display(UBYTE *Image)
+rem *   Need to pass parameters: pointer to cached data
+rem #
+rem # Permission is hereby granted, free of charge, to any person obtaining a copy
+rem # of this software and associated documnetation files (the "Software"), to deal
+rem # in the Software without restriction, including without limitation the rights
+rem # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+rem # copies of the Software, and to permit persons to  whom the Software is
+rem # furished to do so, subject to the following conditions:
+rem #
+rem # The above copyright notice and this permission notice shall be included in
+rem # all copies or substantial portions of the Software.
+rem #
+rem # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+rem # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+rem # FITNESS OR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+rem # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+rem # LIABILITY WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+rem # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+rem # THE SOFTWARE.
+rem #
+rem ******************************************************************************/
+
 USEVAR C_RAM
 GOSUB INIT_C
 END
