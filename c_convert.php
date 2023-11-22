@@ -624,19 +624,25 @@ class mainclass {
 		$funccount=count($this->config->functions);
 		for($i=0;$i<$funccount;$i++){
 			$code.='LABEL C_'.strtoupper($this->config->functions[$i])."\n";
-			$origin=12+$i*16;
-			$destination=$funccount*16+$this->funcsneeded[$this->config->functions[$i]]['codestart'];
+			$origin=22+$i*28;
+			$destination=$funccount*28+$this->funcsneeded[$this->config->functions[$i]]['codestart'];
 			$d=($destination-$origin)/2;
 			$bl2=0xf800 | ($d&0x7ff);
 			$d>>=11;
 			$bl1=0xf000 | ($d&0x7ff);
-			$code.='  EXEC $68f0,$6931,$6972,$69b3,$'.dechex($bl1).',$'.dechex($bl2).',$bd00,$46c0'."\n";
+			$code.='  EXEC $b082,$69f0,$9000,$6a30,$9001,$68f0,$6931,$6972,$69b3,$'.dechex($bl1).',$'.dechex($bl2).',$b002,$bd00,$46c0'."\n";
 			/*
+				b082          sub    sp, #8
+				69f0          ldr    r0, [r6, #28]
+				9000          str    r0, [sp, #0]
+				6a30          ldr    r0, [r6, #32]
+				9001          str    r0, [sp, #4]
 				68f0          ldr    r0, [r6, #12]
 				6931          ldr    r1, [r6, #16]
 				6972          ldr    r2, [r6, #20]
 				69b3          ldr    r3, [r6, #24]
 				f000 f800     bl    <xxxx>
+				b002          add    sp, #8
 				bd00          pop    {pc}
 				46c0          nop
 			*/
