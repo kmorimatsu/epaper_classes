@@ -33,8 +33,35 @@ rem #
 rem ******************************************************************************/
 
 USEVAR C_RAM
-GOSUB INIT_C
-END
+
+method EPD_3IN7_4GRAY_CLEAR
+  goto C_EPD_3IN7_4GRAY_CLEAR
+method EPD_3IN7_4GRAY_INIT
+  goto C_EPD_3IN7_4GRAY_INIT
+method EPD_3IN7_4GRAY_DISPLAY
+  goto C_EPD_3IN7_4GRAY_DISPLAY
+method EPD_3IN7_1GRAY_CLEAR
+  goto C_EPD_3IN7_1GRAY_CLEAR
+method EPD_3IN7_1GRAY_INIT
+  goto C_EPD_3IN7_1GRAY_INIT
+method EPD_3IN7_1GRAY_DISPLAY
+  goto C_EPD_3IN7_1GRAY_DISPLAY
+method EPD_3IN7_1GRAY_DISPLAY_PART
+  goto C_EPD_3IN7_1GRAY_DISPLAY_PART
+method EPD_3IN7_SLEEP
+  goto C_EPD_3IN7_SLEEP
+
+method INIT
+  var a,b,c,d
+  GOSUB INIT_C
+  spi 4000
+  if args(0)<4 then
+    a=8:b=9:c=12:d=13
+  else
+    a=args(1):b=args(2):c=args(3):d=args(4)
+  endif
+  gosub C_DEV_GPIO_INIT,a,b,c,d
+return
 
 LABEL INIT_C
   DIM C_RAM(31)

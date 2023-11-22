@@ -32,8 +32,29 @@ rem #
 rem ******************************************************************************/
 
 USEVAR C_RAM
-GOSUB INIT_C
-END
+
+method EPD_2IN66_INIT
+  goto C_EPD_2IN66_INIT
+method EPD_2IN66_INIT_PARTIAL
+  goto C_EPD_2IN66_INIT_PARTIAL
+method EPD_2IN66_CLEAR
+  goto C_EPD_2IN66_CLEAR
+method EPD_2IN66_DISPLAY
+  goto C_EPD_2IN66_DISPLAY
+method EPD_2IN66_SLEEP
+  goto C_EPD_2IN66_SLEEP
+
+method INIT
+  var a,b,c,d
+  GOSUB INIT_C
+  spi 4000
+  if args(0)<4 then
+    a=8:b=9:c=12:d=13
+  else
+    a=args(1):b=args(2):c=args(3):d=args(4)
+  endif
+  gosub C_DEV_GPIO_INIT,a,b,c,d
+return
 
 LABEL INIT_C
   DIM C_RAM(31)
