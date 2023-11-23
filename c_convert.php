@@ -175,17 +175,20 @@ $conf['E5_83V2']=array(
 	'EPD_5in83_V2_Sleep',
 );
 $conf['E5_83bV2']=array(
+	'EPD_5IN83B_V2_Init',
 	'EPD_5IN83B_V2_Clear',
 	'EPD_5IN83B_V2_Display',
 	'EPD_5IN83B_V2_Sleep',
 );
 $conf['E7_5V2']=array(
+	'EPD_7IN5_V2_Init',
 	'EPD_7IN5_V2_Clear',
 	'EPD_7IN5_V2_ClearBlack',
 	'EPD_7IN5_V2_Display',
 	'EPD_7IN5_V2_Sleep',
 );
 $conf['E7_5bV2']=array(
+	'EPD_7IN5B_V2_Init',
 	'EPD_7IN5B_V2_Clear',
 	'EPD_7IN5B_V2_ClearRed',
 	'EPD_7IN5B_V2_ClearBlack',

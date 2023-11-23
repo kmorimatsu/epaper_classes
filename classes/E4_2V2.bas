@@ -229,7 +229,7 @@ EXEC $b580,$af00,$f000,$fd96,$f000,$fdc0,$2012,$f000,$fdd9,$f000,$fdbb,$2021,$f0
      $f7ff,$ff1e,$2004,$f7ff,$feed,$1dfb,$781b,$1dfa,$1c59,$7011,$001a,$4b16,$5c9b,$0018,$f7ff,$ff10,
      $1dfb,$781b,$1dfa,$1c59,$7011,$001a,$4b10,$5c9b,$0018,$f7ff,$ff05,$1dfb,$781b,$1dfa,$1c59,$7011,
      $001a,$4b0b,$5c9b,$0018,$f7ff,$fefa,$202c,$f7ff,$fec9,$1dfb,$781b,$1dfa,$1c59,$7011,$001a,$4b04,
-     $5c9b,$0018,$f7ff,$feec,$46c0,$46bd,$b002,$bd80,$e604,$1000,$b580,$af00,$f7ff,$fe52,$f7ff,$fec6,
+     $5c9b,$0018,$f7ff,$feec,$46c0,$46bd,$b002,$bd80,$e8e4,$1000,$b580,$af00,$f7ff,$fe52,$f7ff,$fec6,
      $b580,$af00,$2022,$f7ff,$fead,$20f7,$f7ff,$fed8,$2020,$f7ff,$fea7,$f7ff,$fe89,$46c0,$46bd,$bd80,
      $b580,$af00,$2022,$f7ff,$ff85,$20c7,$f7ff,$ffaa,$b580,$af00,$2022,$f7ff,$fe95,$20c7,$f7ff,$fec0,
      $2020,$f7ff,$fe8f,$f7ff,$fe71,$46c0,$46bd,$bd80,$b580,$af00,$2022,$f7ff,$ff75,$20ff,$f7ff,$ff9a,

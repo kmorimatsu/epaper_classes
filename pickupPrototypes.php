@@ -7,7 +7,7 @@ $cfiles='';
 $includes='';
 $config=array();
 $ptypes=array();
-$dir = 'e-Paper';
+$dir = 'c/e-Paper';
 foreach (glob($dir . '/*.h') as $filename) {
 	$cfiles.=preg_replace('/h$/','c',$filename)."\n";
 	$includes.='#include "'.$filename.'"'."\n";
@@ -78,7 +78,7 @@ exit;
 function open_h_file($filename){
 	//echo "$filename\n";
 	$hfile=file_get_contents($filename);
-	preg_match_all('/[\r\n]([a-z]+ EPD_.*)/',$hfile,$m);
+	preg_match_all('/[\r\n]([a-zA-Z]+ EPD_.*)/',$hfile,$m);
 	//print_r($m[1]);
 	return $m[1];
 }
