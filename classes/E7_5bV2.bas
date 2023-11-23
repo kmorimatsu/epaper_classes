@@ -33,6 +33,8 @@ rem ****************************************************************************
 
 USEVAR C_RAM
 
+method EPD_7IN5B_V2_INIT
+  goto C_EPD_7IN5B_V2_INIT
 method EPD_7IN5B_V2_CLEAR
   goto C_EPD_7IN5B_V2_CLEAR
 method EPD_7IN5B_V2_CLEARRED
