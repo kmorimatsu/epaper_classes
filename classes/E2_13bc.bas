@@ -98,12 +98,14 @@ method EPD_2IN13BC_SLEEP
 method INIT
   var a,b,c,d
   GOSUB INIT_C
-  spi 4000
   if args(0)<4 then
+    rem dc, cs, rst, busy
     a=8:b=9:c=12:d=13
   else
+    rem dc, cs, rst, busy
     a=args(1):b=args(2):c=args(3):d=args(4)
   endif
+  spi 4000,8,0,b
   gosub C_DEV_GPIO_INIT,a,b,c,d
 return
 
