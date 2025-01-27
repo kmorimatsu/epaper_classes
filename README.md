@@ -21,7 +21,7 @@ e.EPD_2IN13B_V4_DISPLAY(b,r)
 Note that you need to assign DC, CS, RST, and BUSY pins as parameters of NEW function.
 
 ## C files
-The C source code files in "c" directory are used to construct C binary. The objects must be constructed in "build" directory as files, "epaper.hex", "epaper.dis" and "epaper.elf.map".  See c_convert.php source code ("configclass" class).
+The C source code files in "c" directory are used to construct C binary. The objects must be constructed in "build_pico1" and "build_pico2" directories as files, "epaper.hex", "epaper.dis" and "epaper.elf.map".  See c_convert.php source code ("configclass" class).
 
 ## PHP files
 The PHP files in this directory are used to construct MachiKania classes in "classes" directory.
