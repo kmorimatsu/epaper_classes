@@ -3,6 +3,10 @@
 //date_default_timezone_set('America/Los_Angeles');
 date_default_timezone_set('Etc/UCT');
 
+if (!defined('CLASSESDIR')) {
+	define('CLASSESDIR','./classes/pico1/');
+}
+
 $initcode='method INIT
   var a,b,c,d
   GOSUB INIT_C
@@ -18,8 +22,7 @@ $initcode='method INIT
 return
 ';
 
-$dir = 'classes';
-foreach (glob($dir . '/*.bas') as $filename) {
+foreach (glob(CLASSESDIR . '*.bas') as $filename) {
 	echo "$filename \n";
 	$basfile=file_get_contents($filename);
 	$usevarcram=strpos($basfile,"USEVAR C_RAM\n");

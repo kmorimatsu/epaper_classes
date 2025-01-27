@@ -8,6 +8,11 @@
 	Modofied for ePaper classes
 */
 
+if (!defined('CLASSESDIR')) {
+	define('BUILDDIR','./build_pico1/');
+	define('CLASSESDIR','./classes/pico1/');
+}
+
 $conf=array();
 $conf['E2_13V2']=array(
 	'EPD_2IN13_V2_Init',
@@ -206,7 +211,7 @@ foreach($conf as $classname=>$funcs){
 	//file_put_contents('./log.txt',$o->log);
 	$log.=$o->log;
 	//file_put_contents('./result.txt',$o->code);
-	$filename='./classes/'.$classname.'.bas';
+	$filename=CLASSESDIR.$classname.'.bas';
 	if (file_exists($filename)) {
 		$result=file_get_contents($filename);
 		$result=substr($result,0,strpos($result,'LABEL INIT_C'));
@@ -222,10 +227,16 @@ file_put_contents('./log.txt',$log);
 
 class configclass{
 	// File names
-	public $dis_file='./build/epaper.dis';
-	public $map_file='./build/epaper.elf.map';
-	public $hex_file='./build/epaper.hex';
+	public $dis_file;
+	public $map_file;
+	public $hex_file;
 	//public $debug_file='./machikap/machikap.bas';
+
+	function __construct(){
+		$this->dis_file=BUILDDIR.'epaper.dis';
+		$this->map_file=BUILDDIR.'epaper.elf.map';
+		$this->hex_file=BUILDDIR.'epaper.hex';	
+	}
 	
 	// Functions to be exported
 	public $functions=array(
